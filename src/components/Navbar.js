@@ -8,8 +8,34 @@ import CartButtons from './CartButtons'
 import { useProductsContext } from '../context/products_context'
 import { useUserContext } from '../context/user_context'
 
+
 const Nav = () => {
-  return <h4>navbar</h4>
+  return (
+    <NavContainer>
+      <div className="nav-center">
+        <div className="nav-header">
+          <Link to="/">
+            <img src={logo} alt="ComfySloth"/>
+          </Link>
+          <button type="button" className="nav-toggle">
+            <FaBars/>
+          </button>
+        </div>
+        <ul className="nav-links">
+          {
+            links.map((links)=>{
+              const{id,text,url} = links;
+              return(
+                <li key={id}>
+                  <Link to={url}>{text}</Link>
+                </li>
+              )
+            })
+          }
+        </ul>
+      </div>
+    </NavContainer>
+  )
 }
 
 const NavContainer = styled.nav`
